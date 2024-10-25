@@ -1,0 +1,173 @@
+@import "variables";
+@import "components";
+
+// ! Responsive Header
+.open-menu,
+.close-menu {
+  font-size: 3rem;
+  color: $light-color;
+  cursor: pointer;
+  display: none;
+  transition: $general-transition;
+
+  @include media(large) {
+    display: block;
+  }
+}
+
+.open-menu {
+  margin-right: 2rem;
+}
+.close-menu {
+  @include media(large) {
+    position: absolute;
+    top: 2.5rem;
+    right: 2.3rem;
+  }
+}
+.open-menu:hover,
+.close-menu:hover {
+  color: $primary-color;
+}
+#chek {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+}
+// ! Top Header
+.top-header {
+  border-bottom: 1px solid $primary-color;
+  .container {
+    @include flex-display(flex, center, space-between);
+    @include media(small) {
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    .top-social-menu {
+      display: flex;
+
+      li {
+        margin: 0 1rem;
+        padding: 1rem;
+        @include media(large) {
+          margin: 0 0.5rem;
+          padding: 0.5rem;
+        }
+        a {
+          font-size: 2rem;
+          transition: $general-transition;
+          @include media(small) {
+            font-size: 1.5rem;
+          }
+          &:hover {
+            color: $primary-color;
+          }
+        }
+      }
+    }
+    .login-area {
+      span {
+        display: inline-block;
+        @include media(medium) {
+          display: none;
+        }
+      }
+      i {
+        display: none;
+        @include media(medium) {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}
+// ! Nav Header -->
+.nav-header {
+  @include media(large) {
+    position: fixed;
+    background-color: rgba($secondary-color, 0.9);
+    top: 0;
+    width: 50%;
+    right: -50%;
+    z-index: 10;
+    height: 100vh;
+    transition: $general-transition;
+
+    &.active {
+      right: 0;
+    }
+  }
+  .navbar {
+    @include flex-display(flex, center, space-between);
+    @include media(large) {
+      flex-direction: column;
+    }
+    &-list {
+      display: flex;
+      @include media(large) {
+        flex-direction: column;
+        width: 100%;
+      }
+      li {
+        line-height: 8rem;
+        position: relative;
+        transition: $general-transition;
+        .dropdown {
+          position: absolute;
+          background-color: lighten($secondary-color, 10%);
+          width: 150%;
+          left: 50%;
+          z-index: 10;
+          top: 12rem;
+          opacity: 0;
+          visibility: hidden;
+          transition: $general-transition;
+          li {
+            line-height: 4rem;
+          }
+        }
+        &:hover {
+          background-color: $primary-color;
+          & .dropdown {
+            opacity: 1;
+            visibility: visible;
+            top: 8rem;
+          }
+        }
+      }
+      a {
+        font-size: 1.6rem;
+        padding: 0 2rem;
+        letter-spacing: 2px;
+      }
+      i {
+        color: $light-color;
+        font-size: 1.6rem;
+        margin-right: 1rem;
+      }
+    }
+    .search-area {
+      @include media(large) {
+        align-self: flex-start;
+        margin-left: 2rem;
+        width: 100%;
+      }
+      input,
+      button {
+        background-color: transparent;
+        border: none;
+        color: $light-color;
+      }
+      input {
+        border-bottom: 1px solid $primary-color;
+        padding: 0.5rem;
+        outline: none;
+      }
+      button {
+        margin-left: -5rem;
+      }
+    }
+  }
+}
